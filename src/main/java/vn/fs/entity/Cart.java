@@ -23,72 +23,71 @@ import javax.persistence.Table;
 @Table(name = "carts")
 public class Cart implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long cartId;
-	private Double Amount;
-	private String address;
-	private String phone;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long cartId;
+    private Double Amount;
+    private String address;
+    private String phone;
 
-	@ManyToOne
-	@JoinColumn(name = "userId")
-	private User user;
 
-	public Cart() {
-		super();
-	}
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
-	public Cart(Long cartId, Double amount, String address, String phone, User user) {
-		super();
-		this.cartId = cartId;
-		Amount = amount;
-		this.address = address;
-		this.phone = phone;
-		this.user = user;
-	
-	}
+    public Cart() {
+        super();
+    }
 
-	public Long getCartId() {
-		return cartId;
-	}
+    public Cart(Long cartId, Double amount, String address, String phone, User user) {
+        super();
+        this.cartId = cartId;
+        Amount = amount;
+        this.address = address;
+        this.phone = phone;
+        this.user = user;
 
-	public void setCartId(Long cartId) {
-		this.cartId = cartId;
-	}
+    }
 
-	public Double getAmount() {
-		return Amount;
-	}
+    public Long getCartId() {
+        return cartId;
+    }
 
-	public void setAmount(Double amount) {
-		Amount = amount;
-	}
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public Double getAmount() {
+        return Amount;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setAmount(Double amount) {
+        Amount = amount;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	
-	
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

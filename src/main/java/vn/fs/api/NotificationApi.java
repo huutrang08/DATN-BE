@@ -22,38 +22,38 @@ import vn.fs.repository.NotificationRepository;
 @RequestMapping("api/notification")
 public class NotificationApi {
 
-	@Autowired
-	NotificationRepository notificationRepository;
+    @Autowired
+    NotificationRepository notificationRepository;
 
-	@GetMapping
-	public ResponseEntity<List<Notification>> getAll() {
-		return ResponseEntity.ok(notificationRepository.findByOrderByIdDesc());
-	}
+    @GetMapping
+    public ResponseEntity<List<Notification>> getAll() {
+        return ResponseEntity.ok(notificationRepository.findByOrderByIdDesc());
+    }
 
-	@PostMapping
-	public ResponseEntity<Notification> post(@RequestBody Notification notification) {
-		if (notificationRepository.existsById(notification.getId())) {
-			return ResponseEntity.badRequest().build();
-		}
-		notification.setTime(new Date());
-		notification.setStatus(false);
-		return ResponseEntity.ok(notificationRepository.save(notification));
-	}
+    @PostMapping
+    public ResponseEntity<Notification> post(@RequestBody Notification notification) {
+        if (notificationRepository.existsById(notification.getId())) {
+            return ResponseEntity.badRequest().build();
+        }
+        notification.setTime(new Date());
+        notification.setStatus(false);
+        return ResponseEntity.ok(notificationRepository.save(notification));
+    }
 
-	@GetMapping("/readed/{id}")
-	public ResponseEntity<Notification> put(@PathVariable("id") Long id) {
-		if (!notificationRepository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
-		Notification no = notificationRepository.getById(id);
-		no.setStatus(true);
-		return ResponseEntity.ok(notificationRepository.save(no));
-	}
+    @GetMapping("/readed/{id}")
+    public ResponseEntity<Notification> put(@PathVariable("id") Long id) {
+        if (!notificationRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        Notification no = notificationRepository.getById(id);
+        no.setStatus(true);
+        return ResponseEntity.ok(notificationRepository.save(no));
+    }
 
-	@GetMapping("/read-all")
-	public ResponseEntity<Void> readAll() {
-		notificationRepository.readAll();
-		return ResponseEntity.ok().build();
-	}
+    @GetMapping("/read-all")
+    public ResponseEntity<Void> readAll() {
+        notificationRepository.readAll();
+        return ResponseEntity.ok().build();
+    }
 
 }

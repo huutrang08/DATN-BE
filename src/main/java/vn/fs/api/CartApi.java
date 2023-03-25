@@ -21,29 +21,29 @@ import vn.fs.repository.UserRepository;
 @RequestMapping("api/cart")
 public class CartApi {
 
-	@Autowired
-	CartRepository cartRepository;
+    @Autowired
+    CartRepository cartRepository;
 
-	@Autowired
-	CartDetailRepository cartDetailRepository;
+    @Autowired
+    CartDetailRepository cartDetailRepository;
 
-	@Autowired
-	UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-	@GetMapping("/user/{email}")
-	public ResponseEntity<Cart> getCartUser(@PathVariable("email") String email) {
-		if (!userRepository.existsByEmail(email)) {
-			return ResponseEntity.notFound().build();
-		}
-		return ResponseEntity.ok(cartRepository.findByUser(userRepository.findByEmail(email).get()));
-	}
+    @GetMapping("/user/{email}")
+    public ResponseEntity<Cart> getCartUser(@PathVariable("email") String email) {
+        if (!userRepository.existsByEmail(email)) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cartRepository.findByUser(userRepository.findByEmail(email).get()));
+    }
 
-	@PutMapping("/user/{email}")
-	public ResponseEntity<Cart> putCartUser(@PathVariable("email") String email, @RequestBody Cart cart) {
-		if (!userRepository.existsByEmail(email)) {
-			return ResponseEntity.notFound().build();
-		}
-		return ResponseEntity.ok(cartRepository.save(cart));
-	}
+    @PutMapping("/user/{email}")
+    public ResponseEntity<Cart> putCartUser(@PathVariable("email") String email, @RequestBody Cart cart) {
+        if (!userRepository.existsByEmail(email)) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cartRepository.save(cart));
+    }
 
 }

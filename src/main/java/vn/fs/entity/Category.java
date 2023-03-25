@@ -21,35 +21,35 @@ import javax.persistence.Table;
 @Table(name = "categories")
 public class Category implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long categoryId;
-	private String categoryName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long categoryId;
+    private String categoryName;
 
-	public Category() {
-		super();
-	}
+    public Category() {
+        super();
+    }
 
-	public Category(Long categoryId, String categoryName) {
-		super();
-		this.categoryId = categoryId;
-		this.categoryName = categoryName;
-	}
+    public Category(Long categoryId, String categoryName) {
+        super();
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+    }
 
-	public Long getCategoryId() {
-		return categoryId;
-	}
+    public Long getCategoryId() {
+        return categoryId;
+    }
 
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
-	}
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	public String getCategoryName() {
-		return categoryName;
-	}
+    public String getCategoryName() {
+        return categoryName;
+    }
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
 }

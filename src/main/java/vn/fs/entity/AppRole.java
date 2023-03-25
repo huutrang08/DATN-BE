@@ -25,38 +25,38 @@ import vn.fs.common.ERole;
 @Table(name = "appRoles")
 public class AppRole implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
 
-	@Enumerated(EnumType.STRING)
-	@Column(length = 20)
-	public ERole name;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    public ERole name;
 
-	public AppRole(Integer id, ERole name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
+    public AppRole(Integer id, ERole name) {
+        super();
+        this.id = id;
+        this.name = name;
+    }
 
-	public AppRole() {
-		super();
-	}
+    public AppRole() {
+        super();
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public ERole getName() {
-		return name;
-	}
+    public ERole getName() {
+        return name;
+    }
 
-	public void setName(ERole name) {
-		this.name = name;
-	}
+    public void setName(ERole name) {
+        this.name = name;
+    }
 
 }

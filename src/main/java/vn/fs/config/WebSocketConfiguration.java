@@ -14,17 +14,17 @@ import vn.fs.handler.NotificationWebSocketHandle;
 @EnableWebSocket
 public class WebSocketConfiguration implements WebSocketConfigurer {
 
-	private final static String NOTIFICATION_ENDPOINT = "/notification";
+    private final static String NOTIFICATION_ENDPOINT = "/notification";
 
-	@Override
-	public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-		webSocketHandlerRegistry.addHandler(getNotificationWebSocketHandler(), NOTIFICATION_ENDPOINT)
-				.setAllowedOrigins("*");
-	}
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
+        webSocketHandlerRegistry.addHandler(getNotificationWebSocketHandler(), NOTIFICATION_ENDPOINT)
+                .setAllowedOrigins("*");
+    }
 
-	@Bean
-	public WebSocketHandler getNotificationWebSocketHandler() {
-		return new NotificationWebSocketHandle();
-	}
+    @Bean
+    public WebSocketHandler getNotificationWebSocketHandler() {
+        return new NotificationWebSocketHandle();
+    }
 
 }

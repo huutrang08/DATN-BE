@@ -22,66 +22,66 @@ import vn.fs.service.implement.UserDetailsServiceImpl;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	UserDetailsServiceImpl userDetailsService;
+    @Autowired
+    UserDetailsServiceImpl userDetailsService;
 
-	@Autowired
-	private AuthEntryPointJwt unauthorizedHandler;
+    @Autowired
+    private AuthEntryPointJwt unauthorizedHandler;
 
-	@Bean
-	public AuthTokenFilter authenticationJwTokenFilter() {
-		return new AuthTokenFilter();
-	}
+    @Bean
+    public AuthTokenFilter authenticationJwTokenFilter() {
+        return new AuthTokenFilter();
+    }
 
-	@Override
-	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
+    @Override
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-		http.authorizeRequests()
-				.antMatchers("api/products",
-						"api/products/bestseller",
-						"api/products/latest",
-						"api/products/rated",
-						"api/products/suggest/**",
-						"api/products/category/**",
-						"api/products/{id}",
-						"api/categories", "api/categories/{id}",
-						"api/rates/**",
-						"api/send-mail/**",
-						"api/cart/user/**",
-						"api/orders/user/**",
-						"api/favorites/email/**",
-						"api/cartDetail/**",
-						"api/auth/email/**",
-						"api/auth/signin/**",
-						"api/auth/signin/**",
-						"api/auth/send-mail-forgot-password-token",
-						"forgot-password", 
-						"api/notification/**")						
-				.permitAll();//cho phép tất cả mọi người truy cập vào các địa chỉ này.
+        http.authorizeRequests()
+                .antMatchers("api/products",
+                        "api/products/bestseller",
+                        "api/products/latest",
+                        "api/products/rated",
+                        "api/products/suggest/**",
+                        "api/products/category/**",
+                        "api/products/{id}",
+                        "api/categories", "api/categories/{id}",
+                        "api/rates/**",
+                        "api/send-mail/**",
+                        "api/cart/user/**",
+                        "api/orders/user/**",
+                        "api/favorites/email/**",
+                        "api/cartDetail/**",
+                        "api/auth/email/**",
+                        "api/auth/signin/**",
+                        "api/auth/signin/**",
+                        "api/auth/send-mail-forgot-password-token",
+                        "forgot-password",
+                        "api/notification/**")
+                .permitAll();//cho phép tất cả mọi người truy cập vào các địa chỉ này.
 
-		http.authorizeRequests().antMatchers("api/orderDetail/**", "api/cart/**").access("hasRole('ROLE_USER')");// cho phép người dùng cso role là user truy cập
+        http.authorizeRequests().antMatchers("api/orderDetail/**", "api/cart/**").access("hasRole('ROLE_USER')");// cho phép người dùng cso role là user truy cập
 
-		http.authorizeRequests().antMatchers("api/orderDetail/**", "api/cart/**", "api/statistical/**", "api/auth/**").access("hasRole('ROLE_ADMIN')");// cho phép người dùng có role là admin truy cập
-		
-		http.addFilterBefore(authenticationJwTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-	}
+        http.authorizeRequests().antMatchers("api/orderDetail/**", "api/cart/**", "api/statistical/**", "api/auth/**").access("hasRole('ROLE_ADMIN')");// cho phép người dùng có role là admin truy cập
+
+        http.addFilterBefore(authenticationJwTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+    }
 
 }

@@ -10,72 +10,71 @@ package vn.fs.dto;
 //@NoArgsConstructor
 public class MailInfo {
 
-	String from;
-	String to;
-	String subject;
-	String body;
-	String attachments;
+    String from;
+    String to;
+    String subject;
+    String body;
+    String attachments;
 
-	public MailInfo(String to, String subject, String body) {
-		this.from = "Promise Shop <Promiseshop.official@gmail.com>";
-		this.to = to;
-		this.subject = subject;
-		this.body = body;
-	}
+    public MailInfo(String to, String subject, String body) {
+        this.from = "Promise Shop <Promiseshop.official@gmail.com>";
+        this.to = to;
+        this.subject = subject;
+        this.body = body;
+    }
 
-	public MailInfo() {
-		super();
-	}
+    public MailInfo() {
+        super();
+    }
 
-	public MailInfo(String from, String to, String subject, String body, String attachments) {
-		super();
-		this.from = from;
-		this.to = to;
-		this.subject = subject;
-		this.body = body;
-		this.attachments = attachments;
-	}
+    public MailInfo(String from, String to, String subject, String body, String attachments) {
+        super();
+        this.from = from;
+        this.to = to;
+        this.subject = subject;
+        this.body = body;
+        this.attachments = attachments;
+    }
 
-	public String getFrom() {
-		return from;
-	}
+    public String getFrom() {
+        return from;
+    }
 
-	public void setFrom(String from) {
-		this.from = from;
-	}
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
-	public String getTo() {
-		return to;
-	}
+    public String getTo() {
+        return to;
+    }
 
-	public void setTo(String to) {
-		this.to = to;
-	}
+    public void setTo(String to) {
+        this.to = to;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-	public String getBody() {
-		return body;
-	}
+    public String getBody() {
+        return body;
+    }
 
-	public void setBody(String body) {
-		this.body = body;
-	}
+    public void setBody(String body) {
+        this.body = body;
+    }
 
-	public String getAttachments() {
-		return attachments;
-	}
+    public String getAttachments() {
+        return attachments;
+    }
 
-	public void setAttachments(String attachments) {
-		this.attachments = attachments;
-	}
-	
-	
+    public void setAttachments(String attachments) {
+        this.attachments = attachments;
+    }
+
 
 }

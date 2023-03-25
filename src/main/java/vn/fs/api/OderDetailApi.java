@@ -20,18 +20,18 @@ import vn.fs.repository.OrderRepository;
 @RequestMapping("api/orderDetail")
 public class OderDetailApi {
 
-	@Autowired
-	OrderDetailRepository orderDetailRepository;
+    @Autowired
+    OrderDetailRepository orderDetailRepository;
 
-	@Autowired
-	OrderRepository orderRepository;
+    @Autowired
+    OrderRepository orderRepository;
 
-	@GetMapping("/order/{id}")
-	public ResponseEntity<List<OrderDetail>> getByOrder(@PathVariable("id") Long id) {
-		if (!orderRepository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
-		return ResponseEntity.ok(orderDetailRepository.findByOrder(orderRepository.findById(id).get()));
-	}
+    @GetMapping("/order/{id}")
+    public ResponseEntity<List<OrderDetail>> getByOrder(@PathVariable("id") Long id) {
+        if (!orderRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(orderDetailRepository.findByOrder(orderRepository.findById(id).get()));
+    }
 
 }
