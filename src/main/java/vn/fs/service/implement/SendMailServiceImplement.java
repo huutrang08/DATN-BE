@@ -60,7 +60,7 @@ public class SendMailServiceImplement implements SendMailService {
 	}
 
 	@Override
-	@Scheduled(fixedDelay = 5000)
+	@Scheduled(fixedDelay = 500000)
 	public void run() {
 		while (!list.isEmpty()) {
 			MailInfo mail = list.remove(0);
