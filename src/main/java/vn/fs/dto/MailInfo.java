@@ -17,7 +17,7 @@ public class MailInfo {
     String attachments;
 
     public MailInfo(String to, String subject, String body) {
-        this.from = "Promise Shop <Promiseshop.official@gmail.com>";
+        this.from = "Promise Shop <trangbh@itelecom.vn>";
         this.to = to;
         this.subject = subject;
         this.body = body;
